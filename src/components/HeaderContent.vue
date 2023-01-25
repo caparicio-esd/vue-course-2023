@@ -9,14 +9,12 @@
 </template>
 
 <script setup>
-import { computed } from "vue"
+import { computed, inject } from "vue"
 
-const props = defineProps({
-  todos: Array,
-})
-const todosLength = computed(() => props.todos.length)
+const { todos } = inject("todoData")
+const todosLength = computed(() => todos.value.length)
 const todosDoneLength = computed(
-  () => props.todos.filter((todo) => todo.isDone).length,
+  () => todos.value.filter((todo) => todo.isDone).length,
 )
 const todosRate = computed(() =>
   ((todosDoneLength.value / todosLength.value) * 100).toFixed(2),

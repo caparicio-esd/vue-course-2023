@@ -1,14 +1,29 @@
 <template>
-  <article class="todo">
+  <article
+    class="todo"
+    :class="classes"
+    :style="styles"
+  >
     <h4>{{ props.todo.title }}</h4>
     <div class="ctas">
-      <div class="done">
+      <div
+        class="done"
+        v-if="!props.todo.isDone"
+        @click="toggleTodo(props.idx)"
+      >
         <CheckCircleIcon />
       </div>
-      <div class="undone">
+      <div
+        class="undone"
+        v-else
+        @click="toggleTodo(props.idx)"
+      >
         <CheckCircleIcon />
       </div>
-      <div class="remove">
+      <div
+        class="remove"
+        @click="removeTodo(props.id)"
+      >
         <XCircleIcon />
       </div>
     </div>
@@ -18,10 +33,21 @@
 <script setup>
 import { CheckCircleIcon } from "@heroicons/vue/24/solid"
 import { XCircleIcon } from "@heroicons/vue/24/solid"
+import { computed, inject } from "vue"
 
 const props = defineProps({
   todo: Object,
+  idx: Number,
 })
+const { toggleTodo, removeTodo } = inject("todoData")
+const classes = computed(() => ({
+  done: props.todo.isDone,
+}))
+const styles = computed(() => ({
+  backgroundColor: props.todo.isDone ? "pink" : "",
+  border: "1px solid salmon",
+  transform: props.todo.isDone ? "rotate(5deg)" : "",
+}))
 </script>
 
 <style lang="sass" scoped>

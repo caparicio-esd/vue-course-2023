@@ -1,12 +1,27 @@
 <template>
   <main class="main">
-    <section class="todos">
-      <Todo :todo="props.todos[0]"></Todo>
-      <Todo :todo="props.todos[1]"></Todo>
-      <Todo :todo="props.todos[2]"></Todo>
+    <section
+      class="todos"
+      v-if="todos.length > 0"
+    >
+      <Todo
+        v-for="(todo, i) in todos"
+        :key="i"
+        :todo="todo"
+        :idx="i"
+      ></Todo>
     </section>
+    <div
+      class="no_todos"
+      v-else
+    >
+      No todos available
+    </div>
     <div class="add_new">
-      <BaseButton content="Add new"></BaseButton>
+      <BaseButton
+        content="Add new"
+        @click.prevent="openModalWindow"
+      ></BaseButton>
     </div>
   </main>
 </template>
@@ -14,10 +29,9 @@
 <script setup>
 import BaseButton from "./BaseButton.vue"
 import Todo from "./Todo.vue"
+import { inject } from "vue"
 
-const props = defineProps({
-  todos: Array,
-})
+const { todos, openModalWindow } = inject("todoData")
 </script>
 
 <style lang="sass" scoped>
