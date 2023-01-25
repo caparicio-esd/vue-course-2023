@@ -1,16 +1,12 @@
 <template>
   <main class="main">
     <section class="todos">
-      <Todo></Todo>
-      <Todo></Todo>
-      <Todo></Todo>
-      <Todo></Todo>
-      <Todo></Todo>
-      <Todo></Todo>
-      <Todo></Todo>
+      <Todo :todo="props.todos[0]"></Todo>
+      <Todo :todo="props.todos[1]"></Todo>
+      <Todo :todo="props.todos[2]"></Todo>
     </section>
     <div class="add_new">
-      <BaseButton></BaseButton>
+      <BaseButton content="Add new"></BaseButton>
     </div>
   </main>
 </template>
@@ -18,6 +14,10 @@
 <script setup>
 import BaseButton from "./BaseButton.vue"
 import Todo from "./Todo.vue"
+
+const props = defineProps({
+  todos: Array,
+})
 </script>
 
 <style lang="sass" scoped>

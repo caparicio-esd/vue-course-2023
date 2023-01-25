@@ -1,6 +1,6 @@
 <template>
   <article class="todo">
-    <h4>todo title</h4>
+    <h4>{{ props.todo.title }}</h4>
     <div class="ctas">
       <div class="done">
         <CheckCircleIcon />
@@ -16,9 +16,12 @@
 </template>
 
 <script setup>
-// import { CheckCircle } from "@heroicons/vue/outline"
 import { CheckCircleIcon } from "@heroicons/vue/24/solid"
 import { XCircleIcon } from "@heroicons/vue/24/solid"
+
+const props = defineProps({
+  todo: Object,
+})
 </script>
 
 <style lang="sass" scoped>

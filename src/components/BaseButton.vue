@@ -1,8 +1,12 @@
 <template>
-  <button class="button">button...</button>
+  <button class="button">{{ props.content }}</button>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  content: String,
+})
+</script>
 
 <style lang="sass" scoped>
 @import "/src/assets/mixins"

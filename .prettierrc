@@ -2,5 +2,8 @@
   "tabWidth": 2,
   "useTabs": false,
   "semi": false,
-  "trailingComma": "none"
+  "trailingComma": "all",
+  "singleQuote": false,
+  "proseWrap": "always",
+  "singleAttributePerLine": true
 }

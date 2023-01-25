@@ -1,15 +1,22 @@
 <template>
   <div class="todo_app">
     <div class="todo_app_holder">
-      <TodoHeader></TodoHeader>
-      <TodoMain></TodoMain>
+      <TodoHeader :todos="todos"></TodoHeader>
+      <TodoMain :todos="todos"></TodoMain>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue"
 import TodoHeader from "./components/TodoHeader.vue"
 import TodoMain from "./components/TodoMain.vue"
+
+const todos = ref([
+  { title: "learn vue", isDone: true },
+  { title: "do groceries", isDone: false },
+  { title: "have lunch with mama", isDone: false },
+])
 </script>
 
 <style lang="sass" scoped>
